@@ -2,15 +2,19 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-    let passwordLength = parseInt(window.prompt("How many characters should your password contain?"));
-    if (isNaN(passwordLength)) {
-        window.alert("That isn't a number!");
-        generatePassword();
+    function getLength() {
+        var passwordLength = parseInt(window.prompt("How many characters should your password contain?"));
+        if (isNaN(passwordLength)) {
+            window.alert("That isn't a number!");
+            return getLength();
+        } else if (passwordLength > 128 || passwordLength < 8) {
+            window.alert("You must select a number between 8 and 128!");
+            return getLength();
+        }
+        return passwordLength;
     }
-    if (passwordLength > 128 || passwordLength < 8) {
-        window.alert("You must select a number between 8 and 128!");
-        generatePassword();
-    }
+    var passwordLength = getLength();
+    console.log(passwordLength);
     let wantsLowercase = window.confirm("Should your password contain lowercase letters?");
     let wantsUppercase = window.confirm("Should your password contain uppercase letters?");
     let wantsSpecialChars = window.confirm("Should your password contain special characters?");

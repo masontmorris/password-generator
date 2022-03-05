@@ -14,7 +14,6 @@ function generatePassword() {
         return passwordLength;
     }
     var passwordLength = getLength();
-    console.log(passwordLength);
     let wantsLowercase = window.confirm("Should your password contain lowercase letters?");
     let wantsUppercase = window.confirm("Should your password contain uppercase letters?");
     let wantsSpecialChars = window.confirm("Should your password contain special characters?");
